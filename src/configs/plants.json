@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Basil",
+    "description": "",
+    "img_url": "https://en.wikipedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+    "nations": ["Italy", "India"],
+    "light": {
+      "min": 6,
+      "max": 8
+    },
+    "humidity": {
+      "min": 40,
+      "max": 60
+    },
+    "temperature": {
+      "min": 20,
+      "max": 30
+    }
+  },
+  {
+    "name": "Rose",
+    "description": "",
+    "img_url": "https://en.wikipedia.org/wiki/File:Rosa_rubiginosa_1.jpg",
+    "nations": ["England", "France"],
+    "light": {
+      "min": 6,
+      "max": 8
+    },
+    "humidity": {
+      "min": 40,
+      "max": 60
+    },
+    "temperature": {
+      "min": 20,
+      "max": 30
+    }
+  }
+]

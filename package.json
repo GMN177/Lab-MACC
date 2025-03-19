@@ -1,0 +1,23 @@
+{
+  "name": "lab-macc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "docker": "docker-compose up --build"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.2.0",
+    "mongoose": "^8.12.1",
+    "mongoose-geojson-schema": "^2.2.5",
+    "morgan": "^1.10.0",
+    "winston": "^3.17.0"
+  }
+}
