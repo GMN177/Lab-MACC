@@ -1,14 +1,14 @@
-const express = require("express");
-const logger = require("../utils/logger");
-const plantController = require("../controllers/plantController");
+import { Router } from "express";
+import plantController from "../controllers/plantController.js";
+import log from "../utils/logger.js";
 
-const router = express.Router();
+const router = Router();
 
 router.get("/", async (req, res) => {
   try {
     return res.send(await plantController.search({}));
   } catch (err) {
-    logger.error(err.message);
+    log.error(err.message);
     return res.sendStatus(500);
   }
 });
@@ -17,7 +17,7 @@ router.post("/search", async (req, res) => {
   try {
     return res.send(await plantController.search(req.body));
   } catch (err) {
-    logger.error(err.message);
+    log.error(err.message);
     return res.sendStatus(500);
   }
 });
@@ -26,9 +26,9 @@ router.get("/:id", async (req, res) => {
   try {
     return res.send(await plantController.getPlant(req.params.id));
   } catch (err) {
-    logger.error(err.message);
+    log.error(err.message);
     return res.sendStatus(500);
   }
 });
 
-module.exports = router;
+export default router;

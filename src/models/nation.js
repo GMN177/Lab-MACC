@@ -1,5 +1,5 @@
-const GeoJSON = require("mongoose-geojson-schema");
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import "mongoose-geojson-schema";
 
 const nationSchema = new mongoose.Schema({
   code: String,
@@ -7,6 +7,6 @@ const nationSchema = new mongoose.Schema({
   geometry: mongoose.Schema.Types.Geometry,
 });
 
-nationExport = mongoose.model("nation", nationSchema);
+const Nation = mongoose.model("Nation", nationSchema);
 
-module.exports = nationExport;
+export default Nation;

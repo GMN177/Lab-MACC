@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const plantSchema = new mongoose.Schema({
   name: {
@@ -22,6 +22,6 @@ const plantSchema = new mongoose.Schema({
   },
 });
 
-plantExport = mongoose.model("plant", plantSchema);
+const Plant = mongoose.model("Plant", plantSchema);
 
-module.exports = plantExport;
+export default Plant;

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 function connectToDatabase() {
   mongoose.set("strictQuery", true);
@@ -6,28 +6,29 @@ function connectToDatabase() {
 }
 
 async function seedDatabase() {
-  const Plant = require("../models/plant");
-  const Nation = require("../models/nation");
+  const Nation = mongoose.model("Nation");
+  const Plant = mongoose.model("Plant");
 
   if (process.env.FORCE_SEED) {
     await Plant.deleteMany();
     await Nation.deleteMany();
   }
 
-  const plants = require("./plants.json");
-
   if ((await Plant.countDocuments()) == 0) {
-    await Plant.insertMany(plants);
+    await import("./plants.json", {
+      with: { type: "json" },
+    })
+      .then((m) => m.default)
+      .then((plants) => Plant.insertMany(plants));
   }
 
-  const nations = require("./nations.json");
-
   if ((await Nation.countDocuments()) == 0) {
-    await Nation.insertMany(nations);
+    await import("./nations.json", {
+      with: { type: "json" },
+    })
+      .then((m) => m.default)
+      .then((nations) => Nation.insertMany(nations));
   }
 }
 
-module.exports = {
-  connectToDatabase,
-  seedDatabase,
-};
+export { connectToDatabase, seedDatabase };

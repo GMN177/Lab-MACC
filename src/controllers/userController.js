@@ -1,4 +1,4 @@
-const Search = require("../models/search");
+import Search from "../models/search.js";
 
 async function getUserSearches(userId) {
   return await Search.find({ userId });
@@ -15,7 +15,4 @@ async function saveUserSearch(userId, searchParams) {
   );
 }
 
-module.exports = {
-  getUserSearches,
-  saveUserSearch,
-};
+export default { getUserSearches, saveUserSearch };

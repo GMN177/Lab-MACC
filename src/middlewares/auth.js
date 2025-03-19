@@ -1,6 +1,5 @@
-const { initializeApp, applicationDefault } = require("firebase-admin/app");
-
-const { getAuth } = require("firebase-admin/auth");
+import { applicationDefault, initializeApp } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
 
 const app = initializeApp({
   credential: applicationDefault(),
@@ -26,4 +25,4 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;

@@ -1,13 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const logger = require("./utils/logger");
-const authMiddleware = require("./middlewares/auth");
-const morganMiddleware = require("./middlewares/morgan.middleware");
-const nationRouter = require("./services/nationService");
-const plantRouter = require("./services/plantService");
-const userRouter = require("./services/userService");
-const db = require("./configs/database");
+import cors from "cors";
+import "dotenv/config";
+import express from "express";
+import { connectToDatabase, seedDatabase } from "./configs/database.js";
+import authMiddleware from "./middlewares/auth.js";
+import morganMiddleware from "./middlewares/morgan.middleware.js";
+import nationRouter from "./services/nationService.js";
+import plantRouter from "./services/plantService.js";
+import userRouter from "./services/userService.js";
+import log from "./utils/logger.js";
 
 const app = express();
 
@@ -28,16 +28,14 @@ app.use("/api/plants", plantRouter);
 app.use("/api/users", userRouter);
 
 app.use((err, req, res, next) => {
-  logger.error(err.message);
+  log.error(err.message);
   res.status(500).send("Something went wrong!");
 });
 
-db.connectToDatabase()
-  .then(() => db.seedDatabase())
+connectToDatabase()
+  .then(() => seedDatabase())
   .then(() => {
     let port = process.env.SERVER_PORT || 4000;
-    app.listen(port, () =>
-      logger.info(`SYSTEM UP AND RUNNING ON PORT ${port}!`),
-    );
+    app.listen(port, () => log.info(`SYSTEM UP AND RUNNING ON PORT ${port}!`));
   })
-  .catch((err) => logger.error(err.message));
+  .catch((err) => log.error(err.message));

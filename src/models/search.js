@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const searchSchema = new mongoose.Schema({
   userId: String,
@@ -7,6 +7,6 @@ const searchSchema = new mongoose.Schema({
   temperature: Number,
 });
 
-searchExport = mongoose.model("search", searchSchema);
+const Search = mongoose.model("Search", searchSchema);
 
-module.exports = searchExport;
+export default Search;

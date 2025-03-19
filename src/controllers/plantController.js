@@ -1,5 +1,5 @@
-const Plant = require("../models/plant");
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import Plant from "../models/plant.js";
 
 async function getPlant(id) {
   if (!mongoose.isValidObjectId(id)) {
@@ -57,7 +57,4 @@ async function search(search) {
   return await Plant.find(queryParams);
 }
 
-module.exports = {
-  getPlant,
-  search,
-};
+export default { getPlant, search };

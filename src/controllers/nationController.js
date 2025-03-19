@@ -1,5 +1,5 @@
-const Nation = require("../models/nation");
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import Nation from "../models/nation.js";
 
 async function getNation(id) {
   if (!mongoose.isValidObjectId(id)) {
@@ -37,7 +37,4 @@ async function search(search) {
   return await Nation.find(queryParams);
 }
 
-module.exports = {
-  getNation,
-  search,
-};
+export default { getNation, search };
