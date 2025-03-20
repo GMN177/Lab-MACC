@@ -6,8 +6,8 @@ const stream = {
 };
 
 const skip = () => {
-  const env = process.env.NODE_ENV || "development";
-  return env !== "development";
+  const env = process.env.NODE_ENV || "dev";
+  return env !== "dev";
 };
 
 morgan.token("request-body", (req, res) => JSON.stringify(req.body));
