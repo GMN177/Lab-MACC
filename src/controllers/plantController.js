@@ -21,6 +21,13 @@ async function search(search) {
     });
   }
 
+  if (search.nations) {
+    Object.assign(queryParams, {
+      nations: {
+        $in: search.nations,
+      },
+    });
+  }
   if (search.light) {
     Object.assign(queryParams, {
       "light.min": {

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import nationController from "../controllers/nationController.js";
 import plantController from "../controllers/plantController.js";
 import log from "../utils/logger.js";
 
@@ -14,6 +15,14 @@ router.get("/", async (req, res, next) => {
 
 router.post("/search", async (req, res, next) => {
   try {
+    if (req.body.lng && req.body.lat) {
+      req.body.nations = (
+        await nationController.search({
+          lng: req.body.lng,
+          lat: req.body.lat,
+        })
+      ).map((nation) => nation.name);
+    }
     res.send(await plantController.search(req.body));
   } catch (err) {
     next(err);
