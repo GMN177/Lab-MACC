@@ -4,30 +4,27 @@ import log from "../utils/logger.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
-    return res.send(await nationController.search({}));
+    res.send(await nationController.search({}));
   } catch (err) {
-    log.error(err.message);
-    return res.sendStatus(500);
+    next(err);
   }
 });
 
-router.post("/search", async (req, res) => {
+router.post("/search", async (req, res, next) => {
   try {
-    return res.send(await nationController.search(req.body));
+    res.send(await nationController.search(req.body));
   } catch (err) {
-    log.error(err.message);
-    return res.sendStatus(500);
+    next(err);
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    return res.send(await nationController.getNation(req.params.id));
+    res.send(await nationController.getNation(req.params.id));
   } catch (err) {
-    log.error(err.message);
-    return res.sendStatus(500);
+    next(err);
   }
 });
 

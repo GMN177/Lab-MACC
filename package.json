@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "docker": "docker-compose up --build"
+    "docker": "docker-compose up --build --remove-orphans"
   },
   "author": "",
   "license": "ISC",
