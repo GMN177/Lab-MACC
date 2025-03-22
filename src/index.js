@@ -1,9 +1,12 @@
 import "dotenv/config";
 import express from "express";
 import { connectToDatabase, seedDatabase } from "./configs/database.js";
-import log from "./utils/logger.js";
-import applyMiddlewares from "./middlewares/index.js";
+import {
+  applyErrorMiddlewares,
+  applyMiddlewares,
+} from "./middlewares/index.js";
 import applyRoutes from "./routes/index.js";
+import log from "./utils/logger.js";
 
 const app = express();
 
@@ -11,10 +14,7 @@ applyMiddlewares(app);
 
 applyRoutes(app);
 
-app.use((err, req, res, next) => {
-  log.error(err.message);
-  res.sendStatus(500);
-});
+applyErrorMiddlewares(app);
 
 connectToDatabase()
   .then(() => seedDatabase())

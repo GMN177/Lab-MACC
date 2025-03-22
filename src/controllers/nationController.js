@@ -1,12 +1,20 @@
+import httpStatus from "http-status";
 import mongoose from "mongoose";
+import ApiError from "../utils/ApiError.js";
 import Nation from "../models/nation.js";
 
 async function getNation(id) {
   if (!mongoose.isValidObjectId(id)) {
-    throw new Error("Invalid ID");
+    throw new ApiError(httpStatus.BAD_REQUEST, "Invalid ID");
   }
 
-  return await Nation.findById(id);
+  const nation = await Nation.findById(id);
+
+  if (!nation) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Nation not found");
+  }
+
+  return nation;
 }
 
 async function search(search) {

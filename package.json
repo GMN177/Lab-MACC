@@ -14,8 +14,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "^5.0.1",
     "firebase-admin": "^13.2.0",
+    "http-status": "^2.1.0",
     "mongoose": "^8.12.1",
     "mongoose-geojson-schema": "^2.2.5",
     "morgan": "^1.10.0",

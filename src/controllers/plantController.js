@@ -1,12 +1,20 @@
+import httpStatus from "http-status";
 import mongoose from "mongoose";
+import ApiError from "../utils/ApiError.js";
 import Plant from "../models/plant.js";
 
 async function getPlant(id) {
   if (!mongoose.isValidObjectId(id)) {
-    throw new Error("Invalid ID");
+    throw new ApiError(httpStatus.BAD_REQUEST, "Invalid ID");
   }
 
-  return await Plant.findById(id);
+  const plant = await Plant.findById(id);
+
+  if (!plant) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Plant not found");
+  }
+
+  return plant;
 }
 
 async function search(search) {
