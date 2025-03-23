@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 
-function connectToDatabase() {
-  mongoose.set("strictQuery", true);
-  return mongoose.connect(process.env.DB_URI);
-}
-
 async function seedDatabase() {
   const Nation = mongoose.model("Nation");
   const Plant = mongoose.model("Plant");
@@ -31,4 +26,4 @@ async function seedDatabase() {
   }
 }
 
-export { connectToDatabase, seedDatabase };
+export { seedDatabase };

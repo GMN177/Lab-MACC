@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import mongoose from "mongoose";
 import ApiError from "../utils/ApiError.js";
-import log from "../utils/logger.js";
+import log from "../configs/logger.js";
 
 const convertError = (err) => {
   let error = err;

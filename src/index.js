@@ -1,25 +1,39 @@
 import "dotenv/config";
-import express from "express";
-import { connectToDatabase, seedDatabase } from "./configs/database.js";
-import {
-  applyErrorMiddlewares,
-  applyMiddlewares,
-} from "./middlewares/index.js";
-import applyRoutes from "./routes/index.js";
-import log from "./utils/logger.js";
+import app from "./app.js";
+import { seedDatabase } from "./configs/database.js";
+import log from "./configs/logger.js";
+import mongoose from "mongoose";
 
-const app = express();
+mongoose.set("strictQuery", true);
 
-applyMiddlewares(app);
-
-applyRoutes(app);
-
-applyErrorMiddlewares(app);
-
-connectToDatabase()
-  .then(() => seedDatabase())
+let server;
+mongoose
+  .connect(process.env.DB_URI)
+  .then(seedDatabase)
   .then(() => {
+    log.info("Connected to MongoDB");
     let port = process.env.SERVER_PORT || 4000;
-    app.listen(port, () => log.info(`SYSTEM UP AND RUNNING ON PORT ${port}!`));
-  })
-  .catch((err) => log.error(err.message));
+    server = app.listen(port, () => {
+      log.info(`Listening to port ${port}`);
+    });
+  });
+
+const unexpectedErrorHandler = (error) => {
+  log.error(error);
+  if (server) {
+    server.close(() => {
+      log.info("Server closed");
+      process.exit(1);
+    });
+  } else {
+    process.exit(1);
+  }
+};
+
+process.on("uncaughtException", unexpectedErrorHandler);
+process.on("unhandledRejection", unexpectedErrorHandler);
+
+process.on("SIGTERM", () => {
+  log.info("SIGTERM received");
+  if (server) server.close();
+});
