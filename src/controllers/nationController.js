@@ -1,13 +1,8 @@
 import httpStatus from "http-status";
-import mongoose from "mongoose";
 import ApiError from "../utils/ApiError.js";
 import Nation from "../models/nation.js";
 
 async function getNation(id) {
-  if (!mongoose.isValidObjectId(id)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Invalid ID");
-  }
-
   const nation = await Nation.findById(id);
 
   if (!nation) {
