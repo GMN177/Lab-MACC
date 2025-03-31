@@ -12,7 +12,7 @@ async function getPlant(id) {
   return plant;
 }
 
-async function search(search) {
+async function search(search, nations) {
   let queryParams = {};
 
   if (search.name) {
@@ -24,10 +24,10 @@ async function search(search) {
     });
   }
 
-  if (search.nations) {
+  if (nations) {
     Object.assign(queryParams, {
       nations: {
-        $in: search.nations,
+        $in: nations,
       },
     });
   }

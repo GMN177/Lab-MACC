@@ -14,15 +14,16 @@ router.get(
   "/search",
   validate(plantValidation.searchPlant),
   async (req, res, next) => {
+    let nations;
     if (req.query.lng && req.query.lat) {
-      req.query.nations = (
-        await nationController.search({
+      nations = await nationController
+        .search({
           lng: req.query.lng,
           lat: req.query.lat,
         })
-      ).map((nation) => nation.name);
+        .then((nations) => nations.map((nation) => nation.name));
     }
-    res.send(await plantController.search(req.query));
+    res.send(await plantController.search(req.query, nations));
   },
 );
 
