@@ -1,9 +1,11 @@
 import cors from "cors";
 import express from "express";
-import authMiddleware from "./middlewares/auth.js";
+import httpStatus from "http-status";
 import { errorHandler, successHandler } from "./configs/morgan.js";
+import authMiddleware from "./middlewares/auth.js";
 import errorHandlerMiddleWare from "./middlewares/error.js";
 import applyRoutes from "./routes/index.js";
+import ApiError from "./utils/ApiError.js";
 
 const app = express();
 
