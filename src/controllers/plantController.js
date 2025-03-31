@@ -31,13 +31,14 @@ async function search(search) {
       },
     });
   }
-  if (search.light) {
+
+  if (search.brightness && search.brightness > 0.0) {
     Object.assign(queryParams, {
-      "light.min": {
-        $lte: search.light,
+      "brightness.min": {
+        $lte: search.brightness,
       },
-      "light.max": {
-        $gte: search.light,
+      "brightness.max": {
+        $gte: search.brightness,
       },
     });
   }

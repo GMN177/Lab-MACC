@@ -8,7 +8,7 @@ const plantSchema = new mongoose.Schema({
   description: String,
   imgUrl: String,
   nations: [String],
-  light: {
+  brightness: {
     min: Number,
     max: Number,
   },

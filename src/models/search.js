@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 const searchSchema = new mongoose.Schema({
   userId: String,
-  light: Number,
+  lng: Number,
+  lat: Number,
+  brightness: Number,
   humidity: Number,
   temperature: Number,
 });

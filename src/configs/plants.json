@@ -4,7 +4,7 @@
     "description": "",
     "img_url": "https://en.wikipedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
     "nations": ["Italy", "India"],
-    "light": {
+    "brightness": {
       "min": 6,
       "max": 8
     },
@@ -22,7 +22,7 @@
     "description": "",
     "img_url": "https://en.wikipedia.org/wiki/File:Rosa_rubiginosa_1.jpg",
     "nations": ["England", "France"],
-    "light": {
+    "brightness": {
       "min": 6,
       "max": 8
     },

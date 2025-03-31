@@ -6,7 +6,7 @@ const searchPlant = {
     name: Joi.string(),
     lng: Joi.number(),
     lat: Joi.number(),
-    light: Joi.number(),
+    brightness: Joi.number(),
     humidity: Joi.number(),
     temperature: Joi.number(),
   })
