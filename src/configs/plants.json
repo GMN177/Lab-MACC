@@ -2,7 +2,7 @@
   {
     "name": "Basil",
     "description": "",
-    "img_url": "https://en.wikipedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+    "imgUrl": "https://en.wikipedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
     "nations": ["Italy", "India"],
     "brightness": {
       "min": 6,
@@ -20,7 +20,7 @@
   {
     "name": "Rose",
     "description": "",
-    "img_url": "https://en.wikipedia.org/wiki/File:Rosa_rubiginosa_1.jpg",
+    "imgUrl": "https://en.wikipedia.org/wiki/File:Rosa_rubiginosa_1.jpg",
     "nations": ["England", "France"],
     "brightness": {
       "min": 6,
