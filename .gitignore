@@ -1,4 +1,6 @@
 /db
 /node_modules
+.DS_Store
 .env
+serviceAccountKey.json
 package-lock.json

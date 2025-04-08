@@ -8,4 +8,6 @@ RUN npm install --omit=dev
 
 COPY src/ src/
 
+COPY serviceAccountKey.json serviceAccountKey.json
+
 EXPOSE 4000
