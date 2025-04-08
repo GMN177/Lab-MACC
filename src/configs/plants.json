@@ -1,8 +1,8 @@
 [
   {
     "name": "Basil",
-    "description": "",
-    "imgUrl": "https://en.wikipedia.org/wiki/File:Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec nibh quam. Suspendisse semper leo ut leo mollis rutrum.",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Basil-Basilico-Ocimum_basilicum-albahaca.jpg/960px-Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
     "nations": ["Italy", "India"],
     "brightness": {
       "min": 6,
@@ -19,8 +19,8 @@
   },
   {
     "name": "Rose",
-    "description": "",
-    "imgUrl": "https://en.wikipedia.org/wiki/File:Rosa_rubiginosa_1.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec nibh quam. Suspendisse semper leo ut leo mollis rutrum.",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Rosa_rubiginosa_1.jpg/960px-Rosa_rubiginosa_1.jpg",
     "nations": ["England", "France"],
     "brightness": {
       "min": 6,
