@@ -7,6 +7,8 @@ async function getUserSearches(userId) {
 async function saveUserSearch(userId, searchToSave) {
   return await new Search({
     userId,
+    name: searchToSave.name,
+    picture: searchToSave.picture,
     lng: searchToSave.lng,
     lat: searchToSave.lat,
     brightness: searchToSave.brightness,

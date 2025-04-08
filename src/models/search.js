@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 
 const searchSchema = new mongoose.Schema({
   userId: String,
+  name: String,
+  picture: String,
   lng: Number,
   lat: Number,
   brightness: Number,
